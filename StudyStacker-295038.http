@@ -1,0 +1,6 @@
+@StudyStacker_295038_HostAddress = http://localhost:5003
+
+GET {{StudyStacker_295038_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

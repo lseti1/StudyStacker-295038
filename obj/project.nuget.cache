@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "mC4Xyg/PtNk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Lucas Setiady\\Desktop\\WorkStuff\\StudyStacker-295038\\StudyStacker-295038.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lucas Setiady\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.6\\microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",
+    "C:\\Users\\Lucas Setiady\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
