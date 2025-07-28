@@ -1,15 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import AddFlashcard from "./components/AddFlashcard";
 
 function App() {
   return (
-    <div className='w-full h-screen'>
-      <div className='h-full grid grid-cols-[15%_85%]'>
+    <div className='w-full h-screen overflow-hidden'>
+      <div className='h-screen grid grid-cols-[15%_85%]'>
         <div className='bg-gray-600 grid grid-rows-[7%_86%_7%]'>
           <div className='flex justify-center items-center text-white border-y border-gray-500'>
-            <h1 className='tracking-tighter font-bold text-3xl text-shadow'>Study Stacker</h1>
+            <h1 className='tracking-tighter font-bold text-4xl text-shadow'>Study Stacker</h1>
           </div>
           <div className='flex flex-col text-white'>
             <div className='flex justify-between items-center bg-black h-[8%] px-5 border-y border-gray-500'>
@@ -21,27 +20,50 @@ function App() {
               <p className='text-2xl font-light'>^</p>
             </div>
           </div>
-          <div className='flex justify-between items-center text-white bg-black p-2 border-y border-gray-500'>
-             <button className='text-2xl tracking-tighter'>Add Deck +</button>
+          <div className='flex justify-between items-center text-white bg-black p-4 border-y border-gray-500'>
+             <button className='text-2xl tracking-tighter hover:text-gray-400'>Add Deck +</button>
              <button className=''>
-              <svg xmlns='http://www.w3.org/2000/svg' className='w-10 h-10' fill='none' viewBox='0 0 24 24' stroke= 'currentColor' stroke-width='2' >
+              <svg xmlns='http://www.w3.org/2000/svg' className='w-10 h-10 hover:text-gray-400' fill='none' viewBox='0 0 24 24' stroke= 'currentColor' stroke-width='2' >
                 <path stroke-linecap='round"'  stroke-linejoin='round'  d='M4 6h16M4 12h16M4 18h16' />
               </svg>
             </button>
           </div>
         </div>
-        <div className='bg-gray-100 grid grid-rows-[7%_86%_7%]'>
+        <div className='bg-gray-100 h-screen grid grid-rows-[7%_auto_7%]'>
           <div className='bg-gray-200 border-y border-gray-300 flex justify-between items-center px-10'>
-            <p>Deck Information</p>
-            <p>Login/Settings Information</p>
+            <div className='flex justify-center items-center gap-4'>
+              <p className='text-4xl tracking-tighter font-light'>No Deck Selected</p>
+              <div className='flex flex-col justify-start'>
+                <p>Total Decks: 10</p>
+              </div>
+            </div>
+            <div className='flex flex-row justify-center items-center gap-4'>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 15.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 hover:text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+            </div>
           </div>
-          <div className='grid grid-cols-3 h-full gap-10 flex justify-start items-start p-5'>
-            <p className='border border-gray-300 shadow-md'>Card</p>
+          <div className="overflow-y-auto">
+            <div className="flex flex-row flex-wrap gap-4 p-5 justify-center">
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
+            </div>
           </div>
           <div className='bg-gray-200 border-y border-gray-300 flex justify-end items-center px-10'>
             <p>Additional Action Buttons Here</p>
           </div>
-          
         </div>
         
       </div>
