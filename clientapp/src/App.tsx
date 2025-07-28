@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import AddFlashcard from "./components/AddFlashcard";
+import AddDeck from './components/AddDeck';
 
 function App() {
   return (
@@ -47,7 +48,8 @@ function App() {
               </svg>
             </div>
           </div>
-          <div className="overflow-y-auto">
+          {<AddDeck/>}
+          <div className="overflow-y-auto hidden">
             <div className="flex flex-row flex-wrap gap-4 p-5 justify-center">
               <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
               <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
@@ -68,6 +70,7 @@ function App() {
         
       </div>
       {/* <AddFlashcard/> */}
+      
     </div>
   );
 }

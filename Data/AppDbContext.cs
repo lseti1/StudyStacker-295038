@@ -10,7 +10,8 @@ namespace StudyStacker.Data
         {
         }
 
-        // This exposes the Flashcards table to EF Core
+        // This exposes the Flashcards&Decks  table to EF Core
+        public DbSet<Deck> Decks { get; set; }
         public DbSet<Flashcard> Flashcards { get; set; }
 
     }

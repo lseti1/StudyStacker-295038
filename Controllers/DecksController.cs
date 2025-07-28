@@ -7,21 +7,21 @@ namespace StudyStacker.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class FlashcardsController : ControllerBase
+    public class DeckController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public FlashcardsController(AppDbContext context)
+        public DeckController(AppDbContext context)
         {
             _context = context;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateFlashcard([FromBody] Flashcard flashcard)
+        public async Task<ActionResult<Deck>> PostDeck(Deck deck)
         {
-            _context.Flashcards.Add(flashcard);
+            _context.Decks.Add(deck);
             await _context.SaveChangesAsync();
-            return Ok(flashcard);
+            return Ok(deck);
         }
     }
 }
