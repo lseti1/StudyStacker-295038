@@ -3,9 +3,18 @@ import './App.css';
 import AddFlashcard from "./components/AddFlashcard";
 import AddDeck from './components/AddDeck';
 import DecksSidebar from './components/DecksSidebar';
+import EditDeck from './components/EditDeck';
+import type { Deck } from './types';
 
 function App() {
-  type Components = 'AddDeck' | 'AddFlashcard' | null;
+  type Components = 'AddDeck' | 'AddFlashcard' | 'EditDeck' | null;
+
+  const [selectedDeck, setSelectedDeck] = useState<Deck | null>(null);
+  const handleSelectDeck = (deck: Deck) => {
+    setSelectedDeck(deck);
+    setActivePopUp('EditDeck');
+  };
+
 
   const [activePopUp, setActivePopUp] = useState<Components>(null);
   let activeComponent = null;
@@ -13,6 +22,11 @@ function App() {
   switch (activePopUp) {
     case 'AddDeck':
       activeComponent = <AddDeck onClose={() => setActivePopUp(null)}/>;
+      break;
+    case 'EditDeck':
+      if (selectedDeck) {
+        activeComponent = <EditDeck deck={selectedDeck} onClose={() => setActivePopUp(null)}/>;
+      }
       break;
     default:
       activeComponent = null;
@@ -26,7 +40,7 @@ function App() {
             <h1 className='tracking-tighter font-bold text-4xl text-shadow'>Study Stacker</h1>
           </div>
           <div className='flex flex-col text-white'>
-            <DecksSidebar />
+            <DecksSidebar onSelectDeck={handleSelectDeck}/>
           </div>
           <div className='flex justify-between items-center text-white bg-black p-4 border-y border-gray-500'>
              <button onClick={() => setActivePopUp('AddDeck')} className='text-2xl tracking-tighter hover:text-gray-400'>Add Deck +</button>
@@ -55,7 +69,7 @@ function App() {
               </svg>
             </div>
           </div>
-          {activePopUp === 'AddDeck' && <AddDeck onClose={() => setActivePopUp(null)}/>}
+          {activeComponent}
           
           {/* <div className="overflow-y-auto hidden">
             <div className="flex flex-row flex-wrap gap-4 p-5 justify-center">

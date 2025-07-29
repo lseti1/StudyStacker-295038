@@ -30,5 +30,28 @@ namespace StudyStacker.Controllers
             var decks = await _context.Decks.ToListAsync();
             return Ok(decks);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateDeck(int id, Deck updatedDeck)
+        {
+            if (id != updatedDeck.Id)
+                return BadRequest();
+
+            _context.Entry(updatedDeck).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Decks.Any(e => e.Id == id))
+                    return NotFound();
+                else
+                    throw;
+            }
+
+            return NoContent();
+        }
     }
 }
