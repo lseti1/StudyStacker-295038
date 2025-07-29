@@ -23,5 +23,12 @@ namespace StudyStacker.Controllers
             await _context.SaveChangesAsync();
             return Ok(deck);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<List<Deck>>> GetDecks()
+        {
+            var decks = await _context.Decks.ToListAsync();
+            return Ok(decks);
+        }
     }
 }

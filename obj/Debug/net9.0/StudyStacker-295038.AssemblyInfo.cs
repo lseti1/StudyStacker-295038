@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudyStacker-295038")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52cdc35a912819ef94aa7db1e37540e24bae3147")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8e4f1881410d6ca0c872de2f7f2614107e59fbb")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudyStacker-295038")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudyStacker-295038")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

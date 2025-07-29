@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import AddFlashcard from "./components/AddFlashcard";
 import AddDeck from './components/AddDeck';
+import DecksSidebar from './components/DecksSidebar';
 
 function App() {
   type Components = 'AddDeck' | 'AddFlashcard' | null;
@@ -25,14 +26,7 @@ function App() {
             <h1 className='tracking-tighter font-bold text-4xl text-shadow'>Study Stacker</h1>
           </div>
           <div className='flex flex-col text-white'>
-            <div className='flex justify-between items-center bg-black h-[8%] px-5 border-y border-gray-500'>
-              <p className='text-3xl tracking-tighter'>Decks</p>
-              <p className='text-2xl font-light'>^</p>
-            </div>
-            <div className='flex justify-between items-center bg-black h-[8%] px-5 border-y border-gray-500'>
-              <p className='text-3xl tracking-tighter'>Decks</p>
-              <p className='text-2xl font-light'>^</p>
-            </div>
+            <DecksSidebar />
           </div>
           <div className='flex justify-between items-center text-white bg-black p-4 border-y border-gray-500'>
              <button onClick={() => setActivePopUp('AddDeck')} className='text-2xl tracking-tighter hover:text-gray-400'>Add Deck +</button>

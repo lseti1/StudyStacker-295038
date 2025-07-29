@@ -27,6 +27,7 @@ export default function AddDeck({ onClose }: AddDeckProps) {
             setMessage("Deck saved");
             setName("");
             setDescription("");
+            window.location.reload();
         } else {
             setMessage("Error saving Deck");
         }
