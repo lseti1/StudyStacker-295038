@@ -58,9 +58,9 @@ function App() {
             <DecksSidebar decks={decks} onSelectDeck={handleSelectDeck}/>
           </div>
           <div className='flex justify-between items-center text-white bg-black p-4 border-y border-gray-500'>
-             <button onClick={() => setActivePopUp('AddDeck')} className='text-2xl tracking-tighter hover:text-gray-400'>Add Deck +</button>
+             <button onClick={() => setActivePopUp('AddDeck')} className='text-2xl tracking-tighter hover:text-gray-400 duration-500'>Add Deck +</button>
              <button className=''>
-              <svg xmlns='http://www.w3.org/2000/svg' className='w-10 h-10 hover:text-gray-400' fill='none' viewBox='0 0 24 24' stroke= 'currentColor' stroke-width='2' >
+              <svg xmlns='http://www.w3.org/2000/svg' className='w-10 h-10 hover:text-gray-400 duration-500' fill='none' viewBox='0 0 24 24' stroke= 'currentColor' stroke-width='2' >
                 <path stroke-linecap='round"'  stroke-linejoin='round'  d='M4 6h16M4 12h16M4 18h16' />
               </svg>
             </button>
@@ -75,11 +75,11 @@ function App() {
               </div>
             </div>
             <div className='flex flex-row justify-center items-center gap-4'>
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 hover:text-gray-600 hover:cursor-pointer duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 15.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 hover:text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 hover:text-gray-600 hover:cursor-pointer  duration-500" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
               </svg>
             </div>
