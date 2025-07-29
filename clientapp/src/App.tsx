@@ -31,17 +31,16 @@ function App() {
     setActivePopUp('EditDeck');
   };
 
-
   const [activePopUp, setActivePopUp] = useState<Components>(null);
   let activeComponent = null;
 
   switch (activePopUp) {
     case 'AddDeck':
-      activeComponent = <AddDeck onClose={() => setActivePopUp(null)}/>;
+      activeComponent = <AddDeck onClose={() => {setActivePopUp(null); setSelectedDeck(null);}}/>;
       break;
     case 'EditDeck':
       if (selectedDeck) {
-        activeComponent = <EditDeck deck={selectedDeck} onClose={() => setActivePopUp(null)}/>;
+        activeComponent = <EditDeck deck={selectedDeck} onClose={() => {setActivePopUp(null); setSelectedDeck(null);}}/>;
       }
       break;
     default:
@@ -70,7 +69,7 @@ function App() {
         <div className='bg-gray-100 h-screen grid grid-rows-[7%_93%]'>
           <div className='bg-gray-200 border-y border-gray-300 flex justify-between items-center px-10'>
             <div className='flex justify-center items-center gap-4'>
-              <p className='text-4xl tracking-tighter font-light'>No Deck Selected</p>
+              <p className='text-4xl tracking-tighter font-light'>{selectedDeck ? selectedDeck.name : "No Deck Selected"}</p>
               <div className='flex flex-col justify-start'>
                 <p>Total Decks: {decks.length}</p>
               </div>
