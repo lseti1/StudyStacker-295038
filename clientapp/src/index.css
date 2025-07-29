@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* For regular CSS presets */
 @layer utilities {
   .text-shadow {
     text-shadow: 0 0 5px black;
@@ -9,5 +10,15 @@
 
   .box-shadow-light {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.203);
+  }
+
+  .box-shadow-strong {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.59);
+  }
+}
+/* For tailwind CSS presets */
+@layer components {
+  .button-black {
+    @apply flex justify-center items-center bg-black rounded px-2 w-36 py-2 text-white text-2xl box-shadow-strong hover:bg-gray-700 duration-300;
   }
 }

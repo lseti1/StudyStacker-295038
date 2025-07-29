@@ -1,9 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import AddFlashcard from "./components/AddFlashcard";
 import AddDeck from './components/AddDeck';
 
 function App() {
+  type Components = 'AddDeck' | 'AddFlashcard' | null;
+
+  const [activePopUp, setActivePopUp] = useState<Components>(null);
+  let activeComponent = null;
+
+  switch (activePopUp) {
+    case 'AddDeck':
+      activeComponent = <AddDeck onClose={() => setActivePopUp(null)}/>;
+      break;
+    default:
+      activeComponent = null;
+  }
+
   return (
     <div className='w-full h-screen overflow-hidden'>
       <div className='h-screen grid grid-cols-[15%_85%]'>
@@ -22,7 +35,7 @@ function App() {
             </div>
           </div>
           <div className='flex justify-between items-center text-white bg-black p-4 border-y border-gray-500'>
-             <button className='text-2xl tracking-tighter hover:text-gray-400'>Add Deck +</button>
+             <button onClick={() => setActivePopUp('AddDeck')} className='text-2xl tracking-tighter hover:text-gray-400'>Add Deck +</button>
              <button className=''>
               <svg xmlns='http://www.w3.org/2000/svg' className='w-10 h-10 hover:text-gray-400' fill='none' viewBox='0 0 24 24' stroke= 'currentColor' stroke-width='2' >
                 <path stroke-linecap='round"'  stroke-linejoin='round'  d='M4 6h16M4 12h16M4 18h16' />
@@ -30,7 +43,7 @@ function App() {
             </button>
           </div>
         </div>
-        <div className='bg-gray-100 h-screen grid grid-rows-[7%_auto_7%]'>
+        <div className='bg-gray-100 h-screen grid grid-rows-[7%_93%]'>
           <div className='bg-gray-200 border-y border-gray-300 flex justify-between items-center px-10'>
             <div className='flex justify-center items-center gap-4'>
               <p className='text-4xl tracking-tighter font-light'>No Deck Selected</p>
@@ -48,8 +61,9 @@ function App() {
               </svg>
             </div>
           </div>
-          {<AddDeck/>}
-          <div className="overflow-y-auto hidden">
+          {activePopUp === 'AddDeck' && <AddDeck onClose={() => setActivePopUp(null)}/>}
+          
+          {/* <div className="overflow-y-auto hidden">
             <div className="flex flex-row flex-wrap gap-4 p-5 justify-center">
               <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
               <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
@@ -65,12 +79,10 @@ function App() {
           </div>
           <div className='bg-gray-200 border-y border-gray-300 flex justify-end items-center px-10'>
             <p>Additional Action Buttons Here</p>
-          </div>
+          </div> */}
         </div>
         
       </div>
-      {/* <AddFlashcard/> */}
-      
     </div>
   );
 }
