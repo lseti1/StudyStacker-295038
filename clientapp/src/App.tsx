@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import AddFlashcard from "./components/AddFlashcard";
 import AddDeck from './components/AddDeck';
@@ -8,6 +8,22 @@ import type { Deck } from './types';
 
 function App() {
   type Components = 'AddDeck' | 'AddFlashcard' | 'EditDeck' | null;
+
+  const [decks, setDecks] = useState<Deck[]>([]);
+  const fetchDecks = async () => {
+    try {
+      const response = await fetch("http://localhost:5003/api/deck");
+      const data = await response.json();
+      setDecks(data);
+      
+    } catch (err) {
+      console.error("Failed to fetch decks:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchDecks();
+  }, []);
 
   const [selectedDeck, setSelectedDeck] = useState<Deck | null>(null);
   const handleSelectDeck = (deck: Deck) => {
@@ -40,7 +56,7 @@ function App() {
             <h1 className='tracking-tighter font-bold text-4xl text-shadow'>Study Stacker</h1>
           </div>
           <div className='flex flex-col text-white'>
-            <DecksSidebar onSelectDeck={handleSelectDeck}/>
+            <DecksSidebar decks={decks} onSelectDeck={handleSelectDeck}/>
           </div>
           <div className='flex justify-between items-center text-white bg-black p-4 border-y border-gray-500'>
              <button onClick={() => setActivePopUp('AddDeck')} className='text-2xl tracking-tighter hover:text-gray-400'>Add Deck +</button>
@@ -56,7 +72,7 @@ function App() {
             <div className='flex justify-center items-center gap-4'>
               <p className='text-4xl tracking-tighter font-light'>No Deck Selected</p>
               <div className='flex flex-col justify-start'>
-                <p>Total Decks: 10</p>
+                <p>Total Decks: {decks.length}</p>
               </div>
             </div>
             <div className='flex flex-row justify-center items-center gap-4'>
@@ -70,24 +86,6 @@ function App() {
             </div>
           </div>
           {activeComponent}
-          
-          {/* <div className="overflow-y-auto hidden">
-            <div className="flex flex-row flex-wrap gap-4 p-5 justify-center">
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-              <p className='h-60 w-[32%] border box-shadow-light flex items-center justify-center'>Card 1</p>
-            </div>
-          </div>
-          <div className='bg-gray-200 border-y border-gray-300 flex justify-end items-center px-10'>
-            <p>Additional Action Buttons Here</p>
-          </div> */}
         </div>
         
       </div>
