@@ -19,6 +19,10 @@
 /* For tailwind CSS presets */
 @layer components {
   .button-black {
-    @apply flex justify-center items-center bg-black rounded px-2 w-36 py-2 text-white text-2xl box-shadow-strong hover:bg-gray-700 duration-300;
+    @apply flex justify-center items-center bg-black rounded px-4 min-w-36 py-2 text-white text-2xl box-shadow-strong hover:bg-gray-700 duration-300;
+  }
+
+  .button-green {
+    @apply flex justify-center items-center bg-green-700 rounded px-4 min-w-36 py-2 text-white text-2xl box-shadow-strong hover:bg-green-800 duration-300;
   }
 }
