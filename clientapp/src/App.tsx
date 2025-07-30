@@ -5,9 +5,10 @@ import AddDeck from './components/AddDeck';
 import DecksSidebar from './components/DecksSidebar';
 import EditDeck from './components/EditDeck';
 import type { Deck } from './types';
+import ViewDeck from './components/ViewDeck';
 
 function App() {
-  type Components = 'AddDeck' | 'AddFlashcard' | 'EditDeck' | null;
+  type Components = 'AddDeck' | 'AddFlashcard' | 'EditDeck' | 'ViewDeck' | null;
 
   const [decks, setDecks] = useState<Deck[]>([]);
   const fetchDecks = async () => {
@@ -26,9 +27,14 @@ function App() {
   }, []);
 
   const [selectedDeck, setSelectedDeck] = useState<Deck | null>(null);
-  const handleSelectDeck = (deck: Deck) => {
+  const handleEditDeck = (deck: Deck) => {
     setSelectedDeck(deck);
     setActivePopUp('EditDeck');
+  };
+
+  const handleViewDeck = (deck: Deck) => {
+    setSelectedDeck(deck);
+    setActivePopUp('ViewDeck');
   };
 
   const [activePopUp, setActivePopUp] = useState<Components>(null);
@@ -43,7 +49,12 @@ function App() {
         activeComponent = <EditDeck deck={selectedDeck} onClose={() => {setActivePopUp(null); setSelectedDeck(null);}}/>;
       }
       break;
-    default:
+    case 'ViewDeck':
+      if (selectedDeck) {
+        activeComponent = <ViewDeck deck={selectedDeck} onClose={() => {setActivePopUp(null); setSelectedDeck(null);}}/>
+      }
+      break;
+    default: 
       activeComponent = null;
   }
 
@@ -55,7 +66,7 @@ function App() {
             <h1 className='tracking-tighter font-bold text-4xl text-shadow'>Study Stacker</h1>
           </div>
           <div className='flex flex-col text-white'>
-            <DecksSidebar decks={decks} onSelectDeck={handleSelectDeck}/>
+            <DecksSidebar decks={decks} onSelectDeck={handleEditDeck} onViewDeck={handleViewDeck}/>
           </div>
           <div className='flex justify-between items-center text-white bg-black p-4 border-y border-gray-500'>
              <button onClick={() => setActivePopUp('AddDeck')} className='text-2xl tracking-tighter hover:text-gray-400 duration-500'>Add Deck +</button>
