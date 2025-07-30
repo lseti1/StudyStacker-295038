@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-export default function AddFlashcard() {
+type AddFlashcardProps = {
+    deckId: number;
+}
+
+export default function AddFlashcard( {deckId} : AddFlashcardProps) {
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
     const [message, setMessage] = useState("");
@@ -11,7 +15,7 @@ export default function AddFlashcard() {
         const response = await fetch("http://localhost:5003/api/flashcards", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question, answer }),
+            body: JSON.stringify({ question, answer, deckId }),
         });
 
         if (response.ok) {
@@ -24,7 +28,7 @@ export default function AddFlashcard() {
     };
 
     return (
-        <div className="h-full w-full grid grid-rows-[auto_7%] tracking-tighter font-light">
+        <div className="h-full w-full grid grid-rows-[auto] tracking-tighter font-light">
             <div className="flex flex-col justify-center items-center gap-4">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full h-full justify-center items-center">
                     <h2 className="text-2xl font-semibold text-center">Add a Flashcard</h2>
