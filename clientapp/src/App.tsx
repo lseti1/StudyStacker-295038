@@ -51,7 +51,7 @@ function App() {
       break;
     case 'ViewDeck':
       if (selectedDeck) {
-        activeComponent = <ViewDeck deck={selectedDeck} onClose={() => {setActivePopUp(null); setSelectedDeck(null);}}/>
+        activeComponent = <ViewDeck key={selectedDeck.id} deck={selectedDeck} onClose={() => {setActivePopUp(null); setSelectedDeck(null);}}/>
       }
       break;
     default: 

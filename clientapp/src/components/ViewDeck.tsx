@@ -28,7 +28,7 @@ export default function ViewDeck({ deck, onClose} : ViewDeckProps) {
             <div className='overflow-y-hidden'>{activeComponent}</div>
             <div className='bg-gray-200 border-y border-gray-300 flex justify-end gap-4 items-center px-10'>
                 <button className="button-black" onClick={() => setActivePopUp('AddFlashcard')}>Add Card</button>
-                <button className="button-black">Edit Deck</button>
+                <button className="button-black">Edit Cards</button>
                 <button className="button-black">Start Learning</button>
                 {activePopUp !== null && (
                     <button className="button-black" onClick={() => setActivePopUp(null)}>Exit</button>
