@@ -3,9 +3,10 @@ import { useState } from "react";
 
 type EditFlashcardProps = {
     card: Flashcard;
+    onClose: () => void;
 };
 
-export default function EditFlashcard({ card }: EditFlashcardProps) {
+export default function EditFlashcard({ card, onClose }: EditFlashcardProps) {
     const [question, setQuestion] = useState(card.question);
     const [answer, setAnswer] = useState(card.answer);
     const [message, setMessage] = useState("");
@@ -21,6 +22,7 @@ export default function EditFlashcard({ card }: EditFlashcardProps) {
 
         if (response.ok) {
             setMessage("Flashcard Updated");
+            onClose();
         } else {
             setMessage("Error updating Flashcard");
         }
