@@ -11,7 +11,9 @@ export default function DecksSidebar({ decks, onSelectDeck, onViewDeck} : DecksS
     return (
         <div>
             {decks.length === 0 ? (
-                <p>No Decks Found</p>
+                <div className="flex justify-center items-center p-5">
+                    <p className="text-2xl">No Decks Added</p>
+                </div>
             ) : (
                 <ul>
                     {decks.map(deck => (

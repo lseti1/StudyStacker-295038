@@ -23,5 +23,12 @@ namespace StudyStacker.Controllers
             await _context.SaveChangesAsync();
             return Ok(flashcard);
         }
+
+        [HttpGet("deck/{deckId}")]
+        public async Task<ActionResult<List<Flashcard>>> GetFlashcardsByDeck(int deckId)
+        {
+            var flashcards = await _context.Flashcards.Where(f => f.DeckID == deckId).ToListAsync();
+            return Ok(flashcards);
+        }
     }
 }

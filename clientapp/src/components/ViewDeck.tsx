@@ -19,7 +19,7 @@ export default function ViewDeck({ deck, onClose} : ViewDeckProps) {
             activeComponent = <AddFlashcard deckId={deck.id}/>;
             break;
         default: 
-            activeComponent = <DeckCards />;
+            activeComponent = <DeckCards deckId={deck.id}/>;
             break;
     }
 

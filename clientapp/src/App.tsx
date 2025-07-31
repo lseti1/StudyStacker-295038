@@ -4,7 +4,7 @@ import AddFlashcard from "./components/AddFlashcard";
 import AddDeck from './components/AddDeck';
 import DecksSidebar from './components/DecksSidebar';
 import EditDeck from './components/EditDeck';
-import type { Deck } from './types';
+import type { Deck, Flashcard } from './types';
 import ViewDeck from './components/ViewDeck';
 
 function App() {
@@ -83,6 +83,7 @@ function App() {
               <p className='text-4xl tracking-tighter font-light'>{selectedDeck ? selectedDeck.name : "No Deck Selected"}</p>
               <div className='flex flex-col justify-start'>
                 <p>Total Decks: {decks.length}</p>
+                {/* <p>Total Decks: {selectedDeck ? selectedDeck.length : "No Deck Selected"}</p> */}
               </div>
             </div>
             <div className='flex flex-row justify-center items-center gap-4'>
