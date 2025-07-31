@@ -32,10 +32,12 @@ namespace StudyStacker.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateFlashcard(int id, Flashcard UpdateFlashcard)
+        public async Task<IActionResult> UpdateFlashcard(int id, [FromBody] Flashcard UpdateFlashcard)
         {
-            var flashcard = await _context.Flashcards.FindAsync(id);
+            if (id != UpdateFlashcard.Id)
+                return BadRequest();
 
+            var flashcard = await _context.Flashcards.FindAsync(id);
             if (flashcard == null)
                 return NotFound();
 
