@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import type { Flashcard } from '../types';
 
-
 type DeckCardsProps = {
     deckId: number;
+    onCardClick: (card: Flashcard) => void;
 }
 
-export default function DeckCards({ deckId }: DeckCardsProps) {
+export default function DeckCards({ deckId, onCardClick }: DeckCardsProps) {
     const [flashcards, setFlashcards] = useState<Flashcard[]>([]);
 
     useEffect(() => {
@@ -35,7 +35,7 @@ export default function DeckCards({ deckId }: DeckCardsProps) {
                     ) : (
                         <div className="flex flex-row flex-wrap gap-4 p-5 justify-center">
                             {flashcards.map((card) => (
-                                <p key={card.id} className="bg-white bg-white h-60 w-[32%] border box-shadow-light flex items-center justify-center text-3xl">{card.question}</p>
+                                <p key={card.id} onClick={() => onCardClick(card)} className="bg-white h-60 w-[32%] border box-shadow-light flex items-center justify-center text-3xl hover:bg-gray-100 hover:cursor-pointer select-none duration-500">{card.question}</p>
                             ))}
                         </div>
                     )}

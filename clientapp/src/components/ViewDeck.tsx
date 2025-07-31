@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import type { Deck } from '../types';
+import { Flashcard, type Deck } from '../types';
 import AddFlashcard from './AddFlashcard';
 import DeckCards from './DeckCards';
+import ViewFlashcard from './ViewFlashcard';
 
 type ViewDeckProps = {
     deck: Deck;
@@ -9,17 +10,21 @@ type ViewDeckProps = {
 };
 
 export default function ViewDeck({ deck, onClose} : ViewDeckProps) {
-    type Components = 'AddFlashcard' | 'DeckCards' | null; // Delete Flashcard & Edit Flashcard popups to be added here late
+    type Components = 'AddFlashcard' | 'DeckCards' | 'ViewFlashcard' | null; // Delete Flashcard & Edit Flashcard popups to be added here late
 
     const [activePopUp, setActivePopUp] = useState<Components>(null);
+    const [selectedCard, setSelectedCard] = useState<Flashcard | null>(null); 
     let activeComponent = null;
 
     switch (activePopUp) {
         case 'AddFlashcard':
             activeComponent = <AddFlashcard deckId={deck.id}/>;
             break;
+        case 'ViewFlashcard':
+            activeComponent = selectedCard ? <ViewFlashcard card={selectedCard}/> : null;
+            break;
         default: 
-            activeComponent = <DeckCards deckId={deck.id}/>;
+            activeComponent = <DeckCards deckId={deck.id} onCardClick={(card) => {setSelectedCard(card); setActivePopUp('ViewFlashcard')}}/>;
             break;
     }
 
