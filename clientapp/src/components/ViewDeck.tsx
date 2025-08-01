@@ -13,11 +13,13 @@ type ViewDeckProps = {
 
 export default function ViewDeck({ deck, onClose} : ViewDeckProps) {
     type Components = 'AddFlashcard' | 'DeckCards' | 'ViewFlashcard' | 'EditFlashcard' | 'DeleteFlashcard' | null; 
+    
 
     const [highlight, setHighlight] = useState(false);
     const [activePopUp, setActivePopUp] = useState<Components>(null);
     const [selectedCard, setSelectedCard] = useState<Flashcard | null>(null); 
     let activeComponent = null;
+
 
     switch (activePopUp) {
         case 'AddFlashcard':
@@ -45,7 +47,7 @@ export default function ViewDeck({ deck, onClose} : ViewDeckProps) {
                 {activePopUp === null && ( <button className="button-black" onClick={() => setHighlight((prev) => !prev)}>Edit Cards</button> )}
                 {activePopUp !== null && activePopUp !== 'EditFlashcard' && activePopUp !== 'AddFlashcard' && selectedCard && ( <button className="button-black" onClick={() => setActivePopUp('EditFlashcard')} > Edit Card </button> )}
                 {activePopUp === 'EditFlashcard' && (<button className="button-black" onClick={() => setActivePopUp('DeleteFlashcard')}>Delete Flashcard</button>)}
-                <button className="button-black">Start Learning</button>
+                {/* {hasCards && <button className="button-black">Start Learning</button>} */}
                 {activePopUp !== null && ( <button className="button-black" onClick={() => setActivePopUp(null)}>Exit</button> )}
             </div>
         </div>

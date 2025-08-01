@@ -35,13 +35,14 @@ export default function DeleteDeck({deck, onEditDeck, onExit} : DeleteDeckProps)
                         <div className="flex flex-col gap-4">
                             <div className="grid grid-cols-[30%_70%] justify-between gap-4">
                                 <label className="text-right font-semibold">Deck Name:</label>
-                                <p>{deck.name}</p>
+                                <input className="px-2 select-none  pointer-events-none" type="text" value={deck.name}/>
                             </div>
                             <div className="grid grid-cols-[30%_70%] justify-between gap-4">
                                 <label className="text-right font-semibold">Description:</label>
-                                <p>{deck.description}</p>
+                                <input className="px-2 select-none  pointer-events-none" type="text" value={deck.description}/>
                             </div>
                         </div>
+                        <p className='text-center text-lg'><b>PLEASE NOTE:</b><br />Deleting a deck will delete all cards associated with it</p>
                         <div className="flex justify-center">
                             <button className="button-red" type="submit">Delete Deck</button>
                         </div>

@@ -12,7 +12,7 @@ export default function DecksSidebar({ decks, onEditDeck, onViewDeck} : DecksSid
         <div>
             {decks.length === 0 ? (
                 <div className="flex justify-center items-center p-5">
-                    <p className="text-2xl">No Decks Added</p>
+                    <p className="text-2xl font-light">No Decks Added</p>
                 </div>
             ) : (
                 <ul>

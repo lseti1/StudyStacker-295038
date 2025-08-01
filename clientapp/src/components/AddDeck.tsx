@@ -50,7 +50,7 @@ export default function AddDeck({ onClose }: AddDeckProps) {
                             </div>
                         </div>
                         <div className="flex justify-center">
-                            <button className="button-black" type="submit">Create Deck</button>
+                            <button className="button-green" type="submit">Add Deck</button>
                         </div>
                     </form>
                     {message && <p>{message}</p>}

@@ -53,7 +53,7 @@ export default function EditDeck({ deck, onDeleteDeck, onExit}: EditDeckProps) {
                             </div>
                         </div>
                         <div className="flex justify-center">
-                            <button className="button-black" type="submit">Update Deck</button>
+                            <button className="button-green" type="submit">Update Deck</button>
                         </div>
                     </form>
                     {message && <p>{message}</p>}
