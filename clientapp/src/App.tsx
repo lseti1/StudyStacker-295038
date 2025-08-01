@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import AddFlashcard from "./components/AddFlashcard";
 import AddDeck from './components/AddDeck';
 import DecksSidebar from './components/DecksSidebar';
 import EditDeck from './components/EditDeck';
 import type { Deck, Flashcard } from './types';
 import ViewDeck from './components/ViewDeck';
+import DeleteDeck from './components/DeleteDeck';
 
 function App() {
-  type Components = 'AddDeck' | 'AddFlashcard' | 'EditDeck' | 'ViewDeck' | null;
+  type Components = 'AddDeck' | 'EditDeck' | 'ViewDeck' | 'DeleteDeck' | null;
 
   const [decks, setDecks] = useState<Deck[]>([]);
   const fetchDecks = async () => {
@@ -46,7 +46,12 @@ function App() {
       break;
     case 'EditDeck':
       if (selectedDeck) {
-        activeComponent = <EditDeck deck={selectedDeck} onClose={() => {setActivePopUp(null); setSelectedDeck(null);}}/>;
+        activeComponent = <EditDeck deck={selectedDeck} onDeleteDeck={() => setActivePopUp('DeleteDeck')} onExit={() => {setActivePopUp(null); setSelectedDeck(null);}}/>;
+      }
+      break;
+    case 'DeleteDeck':
+      if (selectedDeck) {
+        activeComponent = <DeleteDeck deck={selectedDeck} onEditDeck={() => setActivePopUp('EditDeck')} onExit={() => setActivePopUp(null)}/>
       }
       break;
     case 'ViewDeck':
@@ -66,7 +71,7 @@ function App() {
             <h1 className='tracking-tighter font-bold text-4xl text-shadow'>Study Stacker</h1>
           </div>
           <div className='flex flex-col text-white'>
-            <DecksSidebar decks={decks} onSelectDeck={handleEditDeck} onViewDeck={handleViewDeck}/>
+            <DecksSidebar decks={decks} onEditDeck={handleEditDeck} onViewDeck={handleViewDeck}/>
           </div>
           <div className='flex justify-between items-center text-white bg-black p-4 border-y border-gray-500'>
              <button onClick={() => setActivePopUp('AddDeck')} className='text-2xl tracking-tighter hover:text-gray-400 duration-500'>Add Deck +</button>

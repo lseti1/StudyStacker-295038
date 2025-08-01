@@ -53,5 +53,18 @@ namespace StudyStacker.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDeck(int id)
+        {
+            var deck = await _context.Decks.FindAsync(id);
+            if (deck == null)
+                return NotFound();
+
+            _context.Decks.Remove(deck);
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }
