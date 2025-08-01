@@ -30,7 +30,7 @@ export default function DeleteFlashcard( {card, onClose} : DeleteFlashcardProps)
             <div className="flex flex-col justify-center items-center gap-4">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full h-full justify-center items-center">
                     <h2 className="text-2xl font-semibold text-center">Deleting a Flashcard</h2>
-                    <div className="bg-white rounded flex flex-col justify-center items-center text-3xl box-shadow-strong w-[50%] h-[60%]">
+                    <div className="bg-white rounded flex flex-col justify-center items-center text-3xl box-shadow-strong w-[50%] h-[60%] select-none">
                         <div className="flex flex-col justify-center items-center border border-gray-100 h-full w-full">
                             <p>{card.question}</p>
                             <p className="text-gray-300 text-base">Front</p>
