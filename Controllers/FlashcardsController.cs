@@ -16,7 +16,7 @@ namespace StudyStacker.Controllers
             _context = context;
         }
 
-        [HttpPost]
+        [HttpPost] // POST = Adding
         public async Task<IActionResult> CreateFlashcard([FromBody] Flashcard flashcard)
         {
             _context.Flashcards.Add(flashcard);
@@ -24,14 +24,14 @@ namespace StudyStacker.Controllers
             return Ok(flashcard);
         }
 
-        [HttpGet("deck/{deckId}")]
+        [HttpGet("deck/{deckId}")] // GET = Showing on screen/retrieving data
         public async Task<ActionResult<List<Flashcard>>> GetFlashcardsByDeck(int deckId)
         {
             var flashcards = await _context.Flashcards.Where(f => f.DeckID == deckId).ToListAsync();
             return Ok(flashcards);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}")] // Updating
         public async Task<IActionResult> UpdateFlashcard(int id, [FromBody] Flashcard UpdateFlashcard)
         {
             if (id != UpdateFlashcard.Id)
@@ -43,6 +43,20 @@ namespace StudyStacker.Controllers
 
             flashcard.Question = UpdateFlashcard.Question;
             flashcard.Answer = UpdateFlashcard.Answer;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteFlashcard(int id)
+        {
+            var flashcard = await _context.Flashcards.FindAsync(id);
+            if (flashcard == null)
+                return NotFound();
+
+            _context.Flashcards.Remove(flashcard);
 
             await _context.SaveChangesAsync();
 

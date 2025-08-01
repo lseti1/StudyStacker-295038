@@ -4,6 +4,7 @@ import AddFlashcard from './AddFlashcard';
 import DeckCards from './DeckCards';
 import ViewFlashcard from './ViewFlashcard';
 import EditFlashcard from './EditFlashcard';
+import DeleteFlashcard from './DeleteFlashcard';
 
 type ViewDeckProps = {
     deck: Deck;
@@ -11,7 +12,7 @@ type ViewDeckProps = {
 };
 
 export default function ViewDeck({ deck, onClose} : ViewDeckProps) {
-    type Components = 'AddFlashcard' | 'DeckCards' | 'ViewFlashcard' | 'EditFlashcard' | null; 
+    type Components = 'AddFlashcard' | 'DeckCards' | 'ViewFlashcard' | 'EditFlashcard' | 'DeleteFlashcard' | null; 
 
     const [highlight, setHighlight] = useState(false);
     const [activePopUp, setActivePopUp] = useState<Components>(null);
@@ -28,8 +29,11 @@ export default function ViewDeck({ deck, onClose} : ViewDeckProps) {
         case 'EditFlashcard':
             activeComponent = selectedCard ? <EditFlashcard card={selectedCard} onClose={() => setActivePopUp(null)}/> : null;
             break;
+        case 'DeleteFlashcard':
+            activeComponent = selectedCard ? <DeleteFlashcard card={selectedCard} onClose={() => setActivePopUp(null)}/> : null;
+            break;
         default: 
-            activeComponent = <DeckCards deckId={deck.id} onCardClick={(card) => {setSelectedCard(card); setActivePopUp('ViewFlashcard')}} onCardSettingsClick={(card) => {setSelectedCard(card); setActivePopUp('EditFlashcard');}} highlight={highlight}/>;
+            activeComponent = <DeckCards deckId={deck.id} onCardClick={(card) => {setSelectedCard(card); setActivePopUp('ViewFlashcard')}} onCardSettingsClick={(card) => {setSelectedCard(card); setActivePopUp('EditFlashcard');}} onCardDeleteClick={(card) => {setSelectedCard(card); setActivePopUp('DeleteFlashcard');}}highlight={highlight}/>;
             break;
     }
 
