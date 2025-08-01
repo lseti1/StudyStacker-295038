@@ -44,6 +44,7 @@ export default function ViewDeck({ deck, onClose} : ViewDeckProps) {
                 {activePopUp !== 'AddFlashcard' && (<button className="button-black" onClick={() => setActivePopUp('AddFlashcard')}>Add Card</button>)}
                 {activePopUp === null && ( <button className="button-black" onClick={() => setHighlight((prev) => !prev)}>Edit Cards</button> )}
                 {activePopUp !== null && activePopUp !== 'EditFlashcard' && activePopUp !== 'AddFlashcard' && selectedCard && ( <button className="button-black" onClick={() => setActivePopUp('EditFlashcard')} > Edit Card </button> )}
+                {activePopUp === 'EditFlashcard' && (<button className="button-black" onClick={() => setActivePopUp('DeleteFlashcard')}>Delete Flashcard</button>)}
                 <button className="button-black">Start Learning</button>
                 {activePopUp !== null && ( <button className="button-black" onClick={() => setActivePopUp(null)}>Exit</button> )}
             </div>

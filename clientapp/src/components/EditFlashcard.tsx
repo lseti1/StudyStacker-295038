@@ -35,11 +35,11 @@ export default function EditFlashcard({ card, onClose }: EditFlashcardProps) {
                     <h2 className="text-2xl font-semibold text-center">Update a Flashcard</h2>
                     <div className="bg-white rounded flex flex-col justify-center items-center text-3xl box-shadow-strong w-[50%] h-[60%]">
                         <div className="flex flex-col justify-center items-center border border-gray-100 h-full w-full">
-                            <input type="text" placeholder="Front" value={question} onChange={(e) => setQuestion(e.target.value)} className="max-w-[50%] rounded p-2 text-center" required />
+                            <input type="text" placeholder="Front" value={question} onChange={(e) => setQuestion(e.target.value)} className="max-w-[50%] rounded text-center" required />
                             <p className="text-gray-300 text-base">Front</p>
                         </div>
                         <div className="flex flex-col justify-center items-center border border-gray-100 h-full w-full">
-                            <input type="text" placeholder="Back" value={answer} onChange={(e) => setAnswer(e.target.value)} className="max-w-[50%] rounded p-2 text-center" required />
+                            <input type="text" placeholder="Back" value={answer} onChange={(e) => setAnswer(e.target.value)} className="max-w-[50%] rounded text-center" required />
                             <p className="text-gray-300 text-base">Back</p>
                         </div>
                     </div>
