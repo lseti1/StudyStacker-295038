@@ -29,7 +29,7 @@ export default function ViewDeck({ deck, onClose} : ViewDeckProps) {
             activeComponent = selectedCard ? <EditFlashcard card={selectedCard} onClose={() => setActivePopUp(null)}/> : null;
             break;
         default: 
-            activeComponent = <DeckCards deckId={deck.id} onCardClick={(card) => {setSelectedCard(card); setActivePopUp('ViewFlashcard')}} highlight={highlight}/>;
+            activeComponent = <DeckCards deckId={deck.id} onCardClick={(card) => {setSelectedCard(card); setActivePopUp('ViewFlashcard')}} onCardSettingsClick={(card) => {setSelectedCard(card); setActivePopUp('EditFlashcard');}} highlight={highlight}/>;
             break;
     }
 
